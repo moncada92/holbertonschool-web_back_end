@@ -4,4 +4,4 @@
 
 def concat(str1: str, str2: str) -> str:
     """ return join the two strings """
-    return "{} {}".format(str1, str2)
+    return str1 + str2
