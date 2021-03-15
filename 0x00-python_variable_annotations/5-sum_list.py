@@ -1,4 +1,4 @@
-#!/usr/bin/env python 3
+#!/usr/bin/env python3
 """ function sum value type float in list """
 
 from typing import List
