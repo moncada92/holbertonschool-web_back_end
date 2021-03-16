@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """ Duck typing - first element of a sequence """
 
-from typing import Any, Union, Sequence, List
+from typing import Any, Union, Sequence
 
 
 # The types of the elements of the input are not know
