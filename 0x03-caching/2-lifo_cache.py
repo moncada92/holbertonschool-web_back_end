@@ -24,7 +24,6 @@ class LIFOCache(BaseCaching):
         if(key is None or item is None):
             pass
         else:
-            
             if (self.cache_data.get(key) is not None):
                 self.pos = list(self.cache_data).index(key)
 
@@ -43,5 +42,3 @@ class LIFOCache(BaseCaching):
             pass
         else:
             return self.cache_data[key]
-  
-  
