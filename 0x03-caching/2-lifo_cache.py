@@ -35,8 +35,6 @@ class LIFOCache(BaseCaching):
                 print("DISCARD: {}".format(last))
                 self.pos = -2
 
-            
-
     def get(self, key):
         """
         get the cache item value
