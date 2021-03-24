@@ -1,16 +1,12 @@
 #!/usr/bin/env python3
 """ simple helper """
+from typing import Tuple
 
 
-def index_range(*args, **kwargs):
-
-    if (args):
-        first = (args[0] * args[1]) - args[1]
-        second = args[0] * args[1]
-        return (first, second)
-
-    elif (kwargs):
-        print(kwargs['page'])
-        first = (kwargs['page'] * kwargs['page_size']) - kwargs['page_size']
-        second = kwargs['page'] * kwargs['page_size']
-        return (first, second)
+def index_range(page: int, page_size: int) -> Tuple[int, int]:
+    """
+    index_range function
+    """
+    end_index = page * page_size
+    start_index = end_index - page_size
+    return (start_index, end_index)
