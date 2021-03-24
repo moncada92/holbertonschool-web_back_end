@@ -4,7 +4,7 @@ Class Server
 """
 import csv
 import math
-from typing import List
+from typing import List, Tuple, Dict
 from math import ceil
 
 
@@ -44,7 +44,7 @@ class Server:
         _end = get_range[1]
         return self.dataset()[_start: _end]
 
-    def get_hyper(self, page: int = 1, page_size: int = 10) -> dict:
+    def get_hyper(self, page: int = 1, page_size: int = 10) -> Dict:
         assert type(page) is int and page > 0
         assert type(page_size) is int and page_size > 0
         get_range = index_range(page, page_size)
