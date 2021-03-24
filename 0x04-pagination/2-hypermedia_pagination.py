@@ -45,20 +45,24 @@ class Server:
         return self.dataset()[_start: _end]
 
     def get_hyper(self, page: int = 1, page_size: int = 10) -> Dict:
+        """
+        Hypermedia pagination
+        """
         assert type(page) is int and page > 0
         assert type(page_size) is int and page_size > 0
-        get_range = index_range(page, page_size)
-        _start = get_range[0]
-        _end = get_range[1]
-        data = self.dataset()[_start: _end]
+        _range = index_range(page, page_size)
+        _start = _range[0]
+        _end = _range[1]
+        _dataPage = self.get_page(page, page_size)
+        _dataFull = self.dataset()
+        _total_pages = ceil(len(_dataFull) / page_size)
 
-        total_page = ceil(self.dataset().__len__() / page_size)
-
-        return {
-          'page_size': page_size,
-          'page': page,
-          'data': data,
-          "next_page": page + 1 if page < total_page else None,
-          "prev_page": page - 1 if page > 1 else None,
-          'total_pages': total_page
+        _dict = {
+            "page_size": len(_dataPage),
+            "page": page,
+            "data": _dataPage,
+            "next_page": page + 1 if page < _total_pages else None,
+            "prev_page": page - 1 if page > 1 else None,
+            "total_pages": _total_pages
         }
+        return _dict
