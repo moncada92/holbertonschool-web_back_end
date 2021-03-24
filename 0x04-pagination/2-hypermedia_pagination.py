@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
-
+"""
+Class Server
+"""
 import csv
 import math
 from typing import List
@@ -15,6 +17,9 @@ class Server:
     DATA_FILE = "Popular_Baby_Names.csv"
 
     def __init__(self):
+        """
+        Constructor
+        """
         self.__dataset = None
 
     def dataset(self) -> List[List]:
@@ -29,6 +34,9 @@ class Server:
         return self.__dataset
 
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
+        """
+        get page content
+        """
         assert type(page) is int and page > 0
         assert type(page_size) is int and page_size > 0
         get_range = index_range(page, page_size)
