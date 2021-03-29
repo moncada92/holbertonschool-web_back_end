@@ -14,7 +14,6 @@ def filter_datum(fields: List[str], redaction: str, message: str,
         # ? -> repeat the next text of the match
     """
     for field in fields:
-        print(f'{field}={redaction}{separator}')
         message = re.sub(fr'{field}=.+?{separator}',
                          f'{field}={redaction}{separator}', message)
     return message
