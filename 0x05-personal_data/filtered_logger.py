@@ -83,3 +83,22 @@ def get_db() -> mysql.connector.connection.MySQLConnection:
             host=host,
             database=database
         )
+
+
+def main():
+    """
+    main function
+    """
+    conn = get_db()
+    users = conn.cursor()
+    users.execute("SELECT CONCAT('name=', name, ';ssn=', ssn, ';ip=', ip, \
+        ';user_agent', user_agent, ';') AS message FROM users;")
+    formatter = RedactingFormatter(fields=PII_FIELDS)
+    logger = get_logger()
+
+    for user in users:
+        logger.log(logging.INFO, user[0])
+
+
+if __name__ == "__main__":
+    main()
