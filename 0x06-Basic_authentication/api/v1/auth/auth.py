@@ -12,12 +12,19 @@ class Auth:
         """ required auth  """
         if path is None or excluded_paths is None or excluded_paths == []:
             return True
-        if path in excluded_paths or path+'/' in excluded_paths:
-            return False
-        else:
+        if path is not None:
+            if path[len(path) - 1] is not '/':
+                path += '/'
+        if path is None:
             return True
-
-        return False
+        for item in excluded_paths:
+            asterisk = item.find("*")
+            if asterisk != -1 and len(path) >= len(item):
+                pathcpy = path[: asterisk]
+                if pathcpy == item[: asterisk]:
+                    return False
+            elif path == item:
+                return False
 
     def authorization_header(self, request=None) -> str:
         """ authorization header  """
