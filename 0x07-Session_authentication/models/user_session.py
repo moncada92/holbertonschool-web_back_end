@@ -1,4 +1,4 @@
-#/user/bin/env python3
+#!/user/bin/env python3
 """ module user session """
 from models.base import Base
 
