@@ -14,22 +14,31 @@ class DB:
     """ class DB """
 
     def __init__(self):
-        """ contructor """
-        self._engine = create_engine("sqlite:///a.db", echo=True)
+        """
+            Constructor
+            create the object BD
+        """
+        self._engine = create_engine("sqlite:///a.db")
         Base.metadata.drop_all(self._engine)
         Base.metadata.create_all(self._engine)
         self.__session = None
 
     @property
     def _session(self):
-        """ set session """
+        """
+            Create if not exists a db session
+            Return the session
+        """
         if self.__session is None:
             DBSession = sessionmaker(bind=self._engine)
             self.__session = DBSession()
         return self.__session
 
     def add_user(self, email: str, hashed_password: str) -> User:
-        """ add user """
+        """
+            Create an User and insert in Database
+            Retrun the new User
+        """
         user = User(email=email, hashed_password=hashed_password)
         self._session.add(user)
         self._session.commit()
