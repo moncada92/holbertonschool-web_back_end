@@ -76,8 +76,7 @@ class Auth:
         if email:
             try:
                 user = self._db.find_user_by(email=email)
-                token = _generate_uuid()
-                self._db.update_user(user.id, reset_token=token)
+                self._db.update_user(user.id, reset_token=str(uuid.uuid4()))
                 return user.reset_token
             except NoResultFound:
                 raise ValueError
