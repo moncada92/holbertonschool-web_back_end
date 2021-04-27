@@ -14,6 +14,9 @@ class Cache:
 
     def store(self, data: bytes) -> str:
         """ store data in db """
-        id = str(uuid.uuid4().hex)
-        self._redis.set(id, data)
-        return id
+        if (type(data) == str or type(data) == bytes
+           or type(data) == int or type(data) == float):
+            id = str(uuid.uuid4().hex)
+            self._redis.set(id, data)
+            return id
+        return None
