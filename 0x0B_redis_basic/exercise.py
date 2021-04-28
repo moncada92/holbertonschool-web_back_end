@@ -28,3 +28,11 @@ class Cache:
                 return fn(result)
             else:
                 return result
+
+    def get_str(self, data: str) -> str:
+        """ Convert data to string """
+        return self._redis.get(data).decode('utf-8')
+
+    def get_int(self, data: str) -> int:
+        """ Convert data to int """
+        return int(self._redis.get(data))
