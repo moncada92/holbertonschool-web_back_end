@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 """ store values """
-
 from functools import wraps
 from redis.client import Redis
 from typing import Union, Callable, Optional, Any
