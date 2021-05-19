@@ -1,9 +1,5 @@
-const getListStudentIds = (list) => {
-  if (Array.isArray(list)) {
-    const ids = [];
-    list.forEach(({ id }) => ids.push(id));
-    return ids;
-  }
+const getListStudentIds = (array) => {
+  if (Array.isArray(array)) return array.map((x) => x.id);
   return [];
 };
 
